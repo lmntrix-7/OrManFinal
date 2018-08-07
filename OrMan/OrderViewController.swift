@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
-class OrderViewController: UITableViewController {
+class OrderViewController: UITableViewController,ScannerDelegate  {
+    
+    
+    
+    
+   
+    
+    
     var products = [Product]()
     
     
@@ -23,7 +31,7 @@ class OrderViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          print( FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Info.plist"))
-
+loadOrders()
         
     }
     override func didReceiveMemoryWarning() {
@@ -43,14 +51,61 @@ class OrderViewController: UITableViewController {
         return cell!
         }
     
+    
+    
     //Mark :- Adding new products
     
     @IBAction func addNewProduct(_ sender: UIBarButtonItem) {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+            if segue.identifier=="goToScanner"{
+                let destinationVC = segue.destination as! ScannerViewController
+                
+                
+                
+            }
         
     }
     
     
+}
+    func userScanned(qr: String) {
+        let newProduct = Product(context: self.context)
+        
+        
+        self.products.append(newProduct)
+        self.saveOrders()
+    }
     
+    
+    
+    func saveOrders(){
+        do{
+            try context.save()
+        }
+        catch{
+            print("Error saving data,\(error)")
+            
+        }
+        tableView.reloadData()
+    }
+    
+    func loadOrders(){
+        let request : NSFetchRequest<Product> = Product.fetchRequest()
+        do{
+            products = try context.fetch(request)
+            
+        }
+        catch{
+            print("Error loading data,\(error)")
+        }
+        tableView.reloadData()
+        
+    }
     
 
 }
+
+    
+
+

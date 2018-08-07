@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1822CE5D21159F5A00443427 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822CE5C21159F5A00443427 /* ScannerViewController.swift */; };
 		183920B0210F7ED100E0D860 /* OrManData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183920AE210F7ED100E0D860 /* OrManData.xcdatamodeld */; };
 		183920B2210F82A300E0D860 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183920B1210F82A300E0D860 /* OrderViewController.swift */; };
 		18A33D3C210CAC9C0050B5B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A33D3B210CAC9C0050B5B8 /* LaunchScreen.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1822CE5C21159F5A00443427 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		183920AF210F7ED100E0D860 /* OrManData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrManData.xcdatamodel; sourceTree = "<group>"; };
 		183920B1210F82A300E0D860 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		18A33D3B210CAC9C0050B5B8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				183920B1210F82A300E0D860 /* OrderViewController.swift */,
 				18A33D3B210CAC9C0050B5B8 /* LaunchScreen.storyboard */,
 				18D05107210B909000DC4405 /* Main.storyboard */,
+				1822CE5C21159F5A00443427 /* ScannerViewController.swift */,
 				18D0510D210B909100DC4405 /* Assets.xcassets */,
 				18D05112210B909100DC4405 /* Info.plist */,
 				183920AE210F7ED100E0D860 /* OrManData.xcdatamodeld */,
@@ -144,6 +147,7 @@
 				18D05106210B909000DC4405 /* CustomerViewController.swift in Sources */,
 				18D05104210B909000DC4405 /* AppDelegate.swift in Sources */,
 				183920B0210F7ED100E0D860 /* OrManData.xcdatamodeld in Sources */,
+				1822CE5D21159F5A00443427 /* ScannerViewController.swift in Sources */,
 				183920B2210F82A300E0D860 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
