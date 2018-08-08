@@ -94,7 +94,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="camera" id="bVZ-Pm-pOr">
                                 <connections>
-                                    <action selector="addNewProduct:" destination="1b0-wM-BRG" id="t5t-dS-CSy"/>
+                                    <action selector="scannerButton:" destination="1b0-wM-BRG" id="at2-tk-ioY"/>
                                     <segue destination="uvc-QP-iD3" kind="show" identifier="goToScanner" id="ejM-Ts-0pZ"/>
                                 </connections>
                             </barButtonItem>

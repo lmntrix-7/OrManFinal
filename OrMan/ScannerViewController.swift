@@ -8,17 +8,18 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
-
-protocol ScannerDelegate {
-    func userScanned(qr:String)
+protocol scannedCode {
+    
+    func userScannedData(data : String)
 }
 
 
-
 class ScannerViewController: UIViewController {
-    var value : String = ""
+     var value : String = ""
     
+    var delegate : scannedCode?
     
     
     
@@ -112,7 +113,6 @@ class ScannerViewController: UIViewController {
         
         let alertPrompt = UIAlertController(title: "ADD Product", message: "You're going to add \(decodedURL)", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            
             if let url = URL(string: decodedURL) {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -125,13 +125,14 @@ class ScannerViewController: UIViewController {
         alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
         
+
         present(alertPrompt, animated: true, completion: nil)
     }
     
 }
 
 extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
-    
+   
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
@@ -152,9 +153,14 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 launchApp(decodedURL: metadataObj.stringValue!)
                 value = metadataObj.stringValue!
                 print(value)
+                delegate?.userScannedData(data: value)
+
+
+
                 
             }
         }
     }
+ 
     
 }

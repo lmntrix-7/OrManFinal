@@ -89,6 +89,8 @@ var customers = [Customer]()
         var nameField = UITextField()
         var numberField = UITextField()
         let alert = UIAlertController(title: "Add new customer details", message: "", preferredStyle: .alert)
+        
+         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
        let alert1 = UIAlertController(title: "Add customer number", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
@@ -102,6 +104,8 @@ var customers = [Customer]()
             }
         
         alert.addAction(action)
+        alert.addAction(cancelAction)
+
         alert.addTextField { (field) in
             nameField = field
             nameField.placeholder = "Add new customer name"

@@ -9,29 +9,15 @@
 import UIKit
 import CoreData
 
-class OrderViewController: UITableViewController,ScannerDelegate  {
-    
-    
-    
-    
-   
-    
-    
-    var products = [Product]()
-    
-    
-    
+class OrderViewController: UITableViewController,scannedCode  {
+   var products = [Product]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
-    
-    
-    
-
-    override func viewDidLoad() {
+override func viewDidLoad() {
         super.viewDidLoad()
          print( FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Info.plist"))
-loadOrders()
+
+    loadOrders()
         
     }
     override func didReceiveMemoryWarning() {
@@ -48,6 +34,7 @@ loadOrders()
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderListCell")
         let product = products[indexPath.row]
         cell?.textLabel?.text = product.order
+        print(product)
         return cell!
         }
     
@@ -55,26 +42,34 @@ loadOrders()
     
     //Mark :- Adding new products
     
-    @IBAction func addNewProduct(_ sender: UIBarButtonItem) {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
             if segue.identifier=="goToScanner"{
                 let destinationVC = segue.destination as! ScannerViewController
                 
-                
+               destinationVC.delegate = self
                 
             }
         
     }
     
+    @IBAction func scannerButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goToScanner", sender: self)
+    }
     
-}
-    func userScanned(qr: String) {
+    
+    
+
+    func userScannedData(data: String) {
+        print("Displayed \(data)")
         let newProduct = Product(context: self.context)
-        
-        
+        newProduct.order = data
         self.products.append(newProduct)
         self.saveOrders()
+        
+        
+        
+        
     }
     
     
